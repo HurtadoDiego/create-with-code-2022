@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 20f;
+    public float turnSpeed = 45f;
+    public float forwardInput;
+    public float horizontalInput;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        forwardInput = Input.GetAxis("Vertical"); // Gets the vertical input from player
+        horizontalInput = Input.GetAxis("Horizontal"); // Gets horizontal input from player
+        // Move forward by 20 meters per second based on forward input
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        // Move sideways by 45 meters per second based on horizontal input
+        transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
     }
 }
