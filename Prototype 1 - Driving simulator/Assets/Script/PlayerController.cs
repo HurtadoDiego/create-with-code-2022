@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 20f;
-    public float turnSpeed = 45f;
-    public float forwardInput;
-    public float horizontalInput;
+    private float speed = 25f; //Haciendolo private ya no se puede modificar ni ver la velocidad dentro de Unity
+    private float turnSpeed = 60f;
+    private float forwardInput;
+    private float horizontalInput;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +22,6 @@ public class PlayerController : MonoBehaviour
         // Move forward by 20 meters per second based on forward input
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         // Move sideways by 45 meters per second based on horizontal input
-        transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
+        transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
     }
 }
